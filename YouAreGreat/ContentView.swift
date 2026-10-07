@@ -8,21 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var createdSymbol = ""
-    @State var isPressed = false
+    @State private var message = "I Am A Programer!"
     var body: some View {
         VStack {
-            
-            Button("Press me"){
-                isPressed=true
-                createdSymbol = "suit.heart"
-            }
-            .buttonStyle(.borderedProminent)
-            .font(.title2)
-            
-            if(isPressed){
-                Image(systemName: createdSymbol)
-                    .font(.largeTitle)
+            Image(systemName: "swift")
+                .resizable()
+                .scaledToFit()
+                .foregroundStyle(.orange)
+            Text(message)
+                .font(.largeTitle)
+                .fontWeight(.ultraLight)
+            HStack {
+                Button("Awesome"){
+                    message = "Awesome"
+                }
+                .buttonStyle(.borderedProminent)
+                .font(.title2)
+                .tint(.orange)
+                
+                Button("Great"){
+                    message = "Great"
+                }
+                .buttonStyle(.borderedProminent)
+                .font(.title2)
+                .tint(.orange)
             }
             
         }
