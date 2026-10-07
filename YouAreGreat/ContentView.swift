@@ -22,17 +22,15 @@ struct ContentView: View {
                 Button("Awesome"){
                     message = "Awesome"
                 }
-                .buttonStyle(.borderedProminent)
-                .font(.title2)
-                .tint(.orange)
                 
                 Button("Great"){
                     message = "Great"
                 }
-                .buttonStyle(.borderedProminent)
-                .font(.title2)
-                .tint(.orange)
+                
             }
+            .buttonStyle(.borderedProminent)
+            .font(.title2)
+            .tint(.orange)
             
         }
         .padding()
