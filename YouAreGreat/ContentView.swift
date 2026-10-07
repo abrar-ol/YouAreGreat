@@ -8,25 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var createdSymbol = ""
+    @State var isPressed = false
     var body: some View {
         VStack {
-            Text("What is football to you?")
-                .font(.largeTitle)
-                .fontWeight(.light)
-                .foregroundStyle(.mint)
-            HStack {
-                Image(systemName: "figure.american.football")
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundStyle(.purple)
-                Image(systemName: "figure.australian.football")
-                    .resizable()
-                    .scaledToFit()
-                Image(systemName: "figure.basketball")
-                    .resizable()
-                    .scaledToFit()
-            }
             
+            Button("Press me"){
+                isPressed=true
+                createdSymbol = "suit.heart"
+            }
+            .buttonStyle(.borderedProminent)
+            .font(.title2)
+            
+            if(isPressed){
+                Image(systemName: createdSymbol)
+                    .font(.largeTitle)
+            }
             
         }
         .padding()
