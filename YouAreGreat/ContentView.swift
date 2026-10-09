@@ -10,25 +10,45 @@ import SwiftUI
 struct ContentView: View {
     @State private var message = ""
     @State private var imageName = ""
+    @State private var messageIndex = 0
+    @State private var ImageNumber = 0
+    
     var body: some View {
         VStack {
-            Spacer()
+            Text(message)
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .foregroundStyle(.red)
+                .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.5)
+                .frame(height: 100)
+                .animation(.easeInOut(duration: 0.15), value: message)
+            
             Image(imageName)
                 .resizable()
                 .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 40))
                 .shadow(radius: 30)
-            Text(message)
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .foregroundStyle(.red)
+                .animation(.default, value: imageName)
+            
             Spacer()
-            Button("Press Me") {
-                let message1 = "You are Awesome!"
-                let message2 = "You are Great!"
+            Button("show Messages") {
+                let messages = ["You are Awesome!",
+                                "You are Great!",
+                                "I'm developer"]
                 
-                message = message == message1 ? message2 : message1
-                imageName = imageName == "image0" ? "image1" : "image0"
+                if messageIndex == messages.count {
+                    messageIndex = 0
+                }
+                message = messages[messageIndex]
+                
+                imageName = "image\(ImageNumber)"
+                if ImageNumber == 9 {
+                    ImageNumber = 0
+                }
+                
+                messageIndex+=1
+                ImageNumber+=1
             }
             .buttonStyle(.borderedProminent)
             .font(.title2)
