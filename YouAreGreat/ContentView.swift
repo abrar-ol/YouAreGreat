@@ -20,6 +20,7 @@ struct ContentView: View {
     let numberOfImages = 10
     
     var body: some View {
+        
         VStack {
             Text(message)
                 .font(.largeTitle)
@@ -74,6 +75,7 @@ struct ContentView: View {
                 .buttonStyle(.borderedProminent)
                 .font(.title2)
             }
+            .tint(.accentColor)
         }
         .padding()
     }
@@ -107,6 +109,9 @@ struct ContentView: View {
     
 }
 
-#Preview {
-    ContentView()
+#Preview("Light Mode") {
+    ContentView().preferredColorScheme(.light)
+}
+#Preview("Dark Mode") {
+    ContentView().preferredColorScheme(.dark)
 }
